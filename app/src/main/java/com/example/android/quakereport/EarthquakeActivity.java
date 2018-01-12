@@ -21,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class EarthquakeActivity extends AppCompatActivity {
 
@@ -31,25 +32,21 @@ public class EarthquakeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
 
-        // Create a fake list of earthquake locations.
-        ArrayList<String> earthquakes = new ArrayList<>();
-        earthquakes.add("San Francisco");
-        earthquakes.add("London");
-        earthquakes.add("Tokyo");
-        earthquakes.add("Mexico City");
-        earthquakes.add("Moscow");
-        earthquakes.add("Rio de Janeiro");
-        earthquakes.add("Paris");
+        ArrayList<Earthquake> earthquakes = new ArrayList<>();
+        earthquakes.add(new Earthquake(1.2, "Blue Springs",  new Date().getTime()/1000));
+        earthquakes.add(new Earthquake(2.1, "Birmingham",    new Date().getTime()/1000));
+        earthquakes.add(new Earthquake(3.2, "London",        new Date().getTime()/1000));
+        earthquakes.add(new Earthquake(4.3, "New York",      new Date().getTime()/1000));
+        earthquakes.add(new Earthquake(5.4, "Las Vegas",     new Date().getTime()/1000));
+        earthquakes.add(new Earthquake(6.5, "San Fransisco", new Date().getTime()/1000));
 
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
 
-        // Create a new {@link ArrayAdapter} of earthquakes
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_list_item_1, earthquakes);
+        EarthquakeAdapter earthquakeAdapter = new EarthquakeAdapter(this, earthquakes);
 
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
-        earthquakeListView.setAdapter(adapter);
+        earthquakeListView.setAdapter(earthquakeAdapter);
     }
 }
