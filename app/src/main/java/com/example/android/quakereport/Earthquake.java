@@ -11,13 +11,20 @@ import java.util.Date;
 public class Earthquake {
     private String mMagnitude;
     private String mLocation;
-    private String mDate;
+    private long mTimeInMilliseconds;
 
-    public Earthquake(String magnitude, String location, String date) {
+    public Earthquake(String magnitude, String location, String timeInMilliseconds) {
 
         mMagnitude = magnitude;
         mLocation = location;
-        mDate = date;
+        mTimeInMilliseconds = Long.parseLong(timeInMilliseconds);
+    }
+
+    public Earthquake(String magnitude, String location, long timeInMilliseconds) {
+
+        mMagnitude = magnitude;
+        mLocation = location;
+        mTimeInMilliseconds = timeInMilliseconds;
     }
 
     public String getMagnitude() {
@@ -36,18 +43,22 @@ public class Earthquake {
         mLocation = location;
     }
 
-    public String getDate() {
-        return mDate;
+    public long getTimeInMilliseconds() {
+        return mTimeInMilliseconds;
     }
 
-    public void setDate(String date) {
-        mDate = date;
+    public void setTimeInMilliseconds(String timeInMilliseconds) {
+        mTimeInMilliseconds = Long.parseLong(timeInMilliseconds);
     }
 
     public String getFormattedDate() {
         //Date date = new Date(mDate);
-        Date date = new Date(Long.parseLong(mDate));
+        Date date = new Date(mTimeInMilliseconds);
         Format formatter = new SimpleDateFormat("MMM dd, yyyy");
         return formatter.format(date);
+    }
+
+    public String getFormattedTime() {
+        return null;
     }
 }
