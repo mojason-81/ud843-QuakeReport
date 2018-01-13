@@ -9,22 +9,22 @@ import java.util.Date;
  */
 
 public class Earthquake {
-    private double mMagnitude;
+    private String mMagnitude;
     private String mLocation;
-    private long mDate;
+    private String mDate;
 
-    public Earthquake(double magnitude, String location, long date) {
+    public Earthquake(String magnitude, String location, String date) {
 
         mMagnitude = magnitude;
         mLocation = location;
         mDate = date;
     }
 
-    public double getMagnitude() {
+    public String getMagnitude() {
         return mMagnitude;
     }
 
-    public void setMagnitude(double magnitude) {
+    public void setMagnitude(String magnitude) {
         mMagnitude = magnitude;
     }
 
@@ -36,20 +36,17 @@ public class Earthquake {
         mLocation = location;
     }
 
-    public long getDate() {
+    public String getDate() {
         return mDate;
     }
 
-    public void setDate(long date) {
+    public void setDate(String date) {
         mDate = date;
     }
 
-    public String getMagnitudeAsText() {
-        return String.valueOf(mMagnitude);
-    }
-
     public String getFormattedDate() {
-        Date date = new Date(mDate);
+        //Date date = new Date(mDate);
+        Date date = new Date(Long.parseLong(mDate));
         Format formatter = new SimpleDateFormat("MMM dd, yyyy");
         return formatter.format(date);
     }
