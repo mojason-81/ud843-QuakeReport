@@ -9,29 +9,40 @@ import java.util.Date;
  */
 
 public class Earthquake {
-    private String mMagnitude;
+    private double mMagnitude;
     private String mLocation;
     private long mTimeInMilliseconds;
 
     public Earthquake(String magnitude, String location, String timeInMilliseconds) {
 
-        mMagnitude = magnitude;
+        mMagnitude = Double.parseDouble(magnitude);
         mLocation = location;
         mTimeInMilliseconds = Long.parseLong(timeInMilliseconds);
     }
 
     public Earthquake(String magnitude, String location, long timeInMilliseconds) {
 
-        mMagnitude = magnitude;
+        mMagnitude = Double.parseDouble(magnitude);
         mLocation = location;
         mTimeInMilliseconds = timeInMilliseconds;
     }
 
-    public String getMagnitude() {
+    public Earthquake(double magnitude, String location, String timeInMilliseconds) {
+
+        mMagnitude = magnitude;
+        mLocation = location;
+        mTimeInMilliseconds = Long.parseLong(timeInMilliseconds);
+    }
+
+    public double getMagnitude() {
         return mMagnitude;
     }
 
     public void setMagnitude(String magnitude) {
+        mMagnitude = Double.parseDouble(magnitude);
+    }
+
+    public void setMagnitude(double magnitude) {
         mMagnitude = magnitude;
     }
 
@@ -51,14 +62,7 @@ public class Earthquake {
         mTimeInMilliseconds = Long.parseLong(timeInMilliseconds);
     }
 
-    public String getFormattedDate() {
-        //Date date = new Date(mDate);
-        Date date = new Date(mTimeInMilliseconds);
-        Format formatter = new SimpleDateFormat("MMM dd, yyyy");
-        return formatter.format(date);
-    }
-
-    public String getFormattedTime() {
-        return null;
+    public void setTimeInMilliseconds(long timeInMilliseconds) {
+        mTimeInMilliseconds = timeInMilliseconds;
     }
 }
