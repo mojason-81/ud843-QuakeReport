@@ -14,8 +14,8 @@ import java.text.DecimalFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by jason on 1/11/18.
@@ -24,10 +24,7 @@ import java.util.Date;
 public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
     private final static String LOCATION_SEPARATOR = "of";
 
-    String primaryLocation;
-    String locationOffset;
-
-    public EarthquakeAdapter(Activity context, ArrayList<Earthquake> earthquakes) {
+    public EarthquakeAdapter(Activity context, List<Earthquake> earthquakes) {
        super(context, 0, earthquakes);
     }
 
@@ -41,8 +38,15 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         }
 
         Earthquake currentEarthquake = getItem(position);
-        String location = currentEarthquake.getLocation();
+        String location;
+        try {
+            location = currentEarthquake.getLocation();
+        } catch (NullPointerException e) {
+            location = "Nowhere";
+        }
 
+        String primaryLocation;
+        String locationOffset;
         if (location.contains(LOCATION_SEPARATOR)) {
             String[] parts = location.split(LOCATION_SEPARATOR);
             locationOffset = parts[0] + LOCATION_SEPARATOR;

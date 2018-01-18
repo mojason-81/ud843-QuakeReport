@@ -12,26 +12,38 @@ public class Earthquake {
     private double mMagnitude;
     private String mLocation;
     private long mTimeInMilliseconds;
+    private String mUrl;
 
-    public Earthquake(String magnitude, String location, String timeInMilliseconds) {
+    public Earthquake(String magnitude, String location, String timeInMilliseconds, String url) {
 
         mMagnitude = Double.parseDouble(magnitude);
         mLocation = location;
         mTimeInMilliseconds = Long.parseLong(timeInMilliseconds);
+        mUrl = url;
     }
 
-    public Earthquake(String magnitude, String location, long timeInMilliseconds) {
+    public Earthquake(String magnitude, String location, long timeInMilliseconds, String url) {
 
         mMagnitude = Double.parseDouble(magnitude);
         mLocation = location;
         mTimeInMilliseconds = timeInMilliseconds;
+        mUrl = url;
     }
 
-    public Earthquake(double magnitude, String location, String timeInMilliseconds) {
+    public Earthquake(double magnitude, String location, String timeInMilliseconds, String url) {
 
         mMagnitude = magnitude;
         mLocation = location;
         mTimeInMilliseconds = Long.parseLong(timeInMilliseconds);
+        mUrl = url;
+    }
+
+    public String getUrl() {
+        return mUrl;
+    }
+
+    public void setUrl(String url) {
+        mUrl = url;
     }
 
     public double getMagnitude() {
