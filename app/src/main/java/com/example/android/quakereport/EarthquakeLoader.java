@@ -6,9 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.example.android.quakereport.Earthquake;
-import com.example.android.quakereport.QueryUtils;
-
 import java.util.List;
 
 /**
@@ -21,20 +18,20 @@ public class EarthquakeLoader extends AsyncTaskLoader<List<Earthquake>> {
 
     public EarthquakeLoader(@NonNull Context context, String url) {
         super(context);
-        Log.d(LOG_TAG, "EarthquakeLoader Constructor");
+        Log.d(LOG_TAG, "CHECK: EarthquakeLoader Constructor() called...");
         mUrl = url;
     }
 
     @Override
     protected void onStartLoading() {
-        Log.d(LOG_TAG, "onStartLoading");
+        Log.d(LOG_TAG, "CHECK: onStartLoading() called...");
         forceLoad();
     }
 
     @Nullable
     @Override
     public List<Earthquake> loadInBackground() {
-        Log.d(LOG_TAG, "loadInBackground");
+        Log.d(LOG_TAG, "CHECK: loadInBackground() called...");
         if (mUrl == null || mUrl.length() < 1) {
             return null;
         }

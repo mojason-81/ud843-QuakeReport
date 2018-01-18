@@ -16,11 +16,9 @@
 package com.example.android.quakereport;
 
 import android.app.LoaderManager;
-import android.content.AsyncTaskLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -77,13 +75,13 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
 
     @Override
     public Loader<List<Earthquake>> onCreateLoader(int id, Bundle args) {
-        Log.d(LOG_TAG, "onCreateLoader");
+        Log.d(LOG_TAG, "CHECK: onCreateLoader() called...");
         return new EarthquakeLoader(this, URL);
     }
 
     @Override
     public void onLoadFinished(Loader<List<Earthquake>> loader, List<Earthquake> data) {
-        Log.d(LOG_TAG, "onLoadFinished");
+        Log.d(LOG_TAG, "CHECK: onLoadFinished() called...");
         // Clear the adapter of previous earthquake data
         mEarthquakeAdapter.clear();
 
@@ -96,7 +94,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
 
     @Override
     public void onLoaderReset(Loader<List<Earthquake>> loader) {
-        Log.d(LOG_TAG, "onLoaderReset");
+        Log.d(LOG_TAG, "CHECK: onLoaderReset() called...");
         mEarthquakeAdapter.clear();
     }
 }
