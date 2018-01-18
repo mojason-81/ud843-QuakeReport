@@ -37,13 +37,6 @@ public final class QueryUtils {
      */
     public static List<Earthquake> extractFeatureFromJson(String jsonResponse) {
 
-        if (jsonResponse == null || jsonResponse == "") {
-            Earthquake fauxQuake = new Earthquake("0.0", "5km S of Nowhere", "000000000", "#");
-            List<Earthquake> quakes = new ArrayList<>();
-            quakes.add(fauxQuake);
-            return quakes;
-        }
-
         // Create an empty ArrayList that we can start adding earthquakes to
         List<Earthquake> earthquakes = new ArrayList<>();
 
@@ -153,6 +146,15 @@ public final class QueryUtils {
 
         // Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
         List<Earthquake> earthquakes = extractFeatureFromJson(jsonResponse);
+
+        // Uncomment to test progressBar
+        /*
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        */
 
         // Return the list of {@link Earthquake}s
         return earthquakes;

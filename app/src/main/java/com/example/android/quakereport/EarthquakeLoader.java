@@ -32,7 +32,7 @@ public class EarthquakeLoader extends AsyncTaskLoader<List<Earthquake>> {
     @Override
     public List<Earthquake> loadInBackground() {
         Log.d(LOG_TAG, "CHECK: loadInBackground() called...");
-        if (mUrl == null || mUrl.length() < 1) {
+        if (mUrl == null | mUrl.length() < 1) {
             return null;
         }
         return QueryUtils.fetchEarthquakeData(mUrl);
